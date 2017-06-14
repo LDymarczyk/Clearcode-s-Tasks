@@ -1,7 +1,10 @@
 from task2 import damage
+from task2 import count_dmg
 from task2 import check_feai as check
 
-print check('feeai')
+#print check('feeai')
+print check('fdafafeajain')
+print count_dmg('feeai')
 
 assert damage('feeai') == 2
 assert damage('feaineain') == 1 + 2 + 2 + 2 == 7 ##(fe-ai-ne-ai) - not (fe-ain-ai) because 1+3+2 = 6
