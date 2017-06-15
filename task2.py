@@ -65,13 +65,13 @@ def damage(spell):
     :return: points of damage
     """
     dmg=0
-    if "fe" in spell and "ai" in spell:
+    if "ai" in spell and spell.count('fe')==1:
         spell=check_feai(spell)
         if spell!=None:
             dmg+=3
-            dmg1=count_dmg1(spell)
-            dmg2=count_dmg2(spell)
+            dmg1,dmg2=count_dmg1(spell),count_dmg2(spell)
             if (dmg1>dmg2): dmg+=dmg1
             else: dmg+=dmg2
     print dmg
+    if dmg<1: return 0
     return dmg
