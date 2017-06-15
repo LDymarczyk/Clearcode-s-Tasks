@@ -72,6 +72,6 @@ def damage(spell):
             dmg1,dmg2=count_dmg1(spell),count_dmg2(spell)
             if (dmg1>dmg2): dmg+=dmg1
             else: dmg+=dmg2
-    print dmg
+    #print dmg
     if dmg<1: return 0
     return dmg
