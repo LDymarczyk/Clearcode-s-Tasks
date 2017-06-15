@@ -1,11 +1,11 @@
 grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2}
-subspells=grimoire.values()
+subspells=grimoire.keys()
 
 def count_dmg(spell):
     """Counts what damage spell deal"""
     dmg, bad_one, i = 0, 0, 0
     while i<len(spell)-2:
-	print spell[i:i+2] == 'fe'
+        #print str(spell[i:i+2]),str(spell[i:i+3])
         if spell[i:i+2] in subspells:
             dmg+=grimoire[spell[i:i+2]]
             i+=2
@@ -15,7 +15,13 @@ def count_dmg(spell):
         else:
             bad_one+=1
             i+=1
-	print dmg-bad_one
+    if i<len(spell):
+        if spell[i:] in subspells:
+            dmg+=grimoire[spell[i:i+2]]
+            i+=2
+        else:
+            dmg-=len(spell)-i
+	#print dmg-bad_one
     return dmg-bad_one
 
 def check_feai(spell):
