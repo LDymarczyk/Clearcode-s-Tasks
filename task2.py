@@ -1,5 +1,5 @@
-grim_list=['jee','je','dai','aine','ain','ne']
-grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2}
+grim_list=['jee','je','dai','aine','ain','ai','ne']
+grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2, 'aine':4}
 subspells=grimoire.keys()
 
 def count_dmg1(spell):
@@ -24,7 +24,16 @@ def count_dmg1(spell):
             dmg-=len(spell)-i
 	#print dmg-bad_one
     return dmg-bad_one
-	
+
+def count_dmg(spell):
+    """Counts what damage spell deal"""
+	dmg=0
+	for i in grim_list:
+	    count=spell.count(i)
+		dmg+=count*grimoire[i]
+		#spell=delete_subspell(spell, i, count)
+	return dmg-len(spell)
+
 def count_dmg2(spell):
     """Counts what damage spell deal"""
     dmg, bad_one, i = 0, 0, 0
