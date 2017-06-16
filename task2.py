@@ -25,13 +25,19 @@ def count_dmg1(spell):
 	#print dmg-bad_one
     return dmg-bad_one
 
+def delete_subspell(spell, subspell, count)
+	"""Function removes <subspell> from <spell> <count> times"""
+	for i in range(count):
+	    spell.remove(subspell)
+	return spell
+	
 def count_dmg(spell):
     """Counts what damage spell deal"""
 	dmg=0
 	for i in grim_list:
 	    count=spell.count(i)
 		dmg+=count*grimoire[i]
-		#spell=delete_subspell(spell, i, count)
+		spell=delete_subspell(spell, i, count)
 	return dmg-len(spell)
 
 def count_dmg2(spell):
