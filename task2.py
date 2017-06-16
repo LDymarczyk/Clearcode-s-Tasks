@@ -1,3 +1,4 @@
+grim_list=['jee','je','dai','aine','ain','ne']
 grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2}
 subspells=grimoire.keys()
 
