@@ -2,29 +2,6 @@ grim_list=['jee','je','dai','aine','ain','ai','ne']
 grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2, 'aine':4}
 subspells=grimoire.keys()
 
-def count_dmg1(spell):
-    """Counts what damage spell deal"""
-    dmg, bad_one, i = 0, 0, 0
-    while i<len(spell)-2:
-        #print str(spell[i:i+2]),str(spell[i:i+3])
-        if spell[i:i+3] in subspells:
-            dmg+=grimoire[spell[i:i+3]]
-            i+=3
-        elif spell[i:i+2] in subspells:
-            dmg+=grimoire[spell[i:i+2]]
-            i+=2
-        else:
-            bad_one+=1
-            i+=1
-    if i<len(spell):
-        if spell[i:] in subspells:
-            dmg+=grimoire[spell[i:]]
-            i+=2
-        else:
-            dmg-=len(spell)-i
-	#print dmg-bad_one
-    return dmg-bad_one
-
 def delete_subspell(spell, subspell, count):
     """Function removes <subspell> from <spell> <count> times"""
     for i in range(count):
@@ -35,34 +12,11 @@ def count_dmg(spell):
     """Counts what damage spell deal"""
     dmg=0
     for i in grim_list:
-        print i,spell
+        #print i,spell
         count=spell.count(i)
         dmg+=count*grimoire[i]
         spell=delete_subspell(spell, i, count)
     return dmg-len(spell)
-
-def count_dmg2(spell):
-    """Counts what damage spell deal"""
-    dmg, bad_one, i = 0, 0, 0
-    while i<len(spell)-2:
-        #print str(spell[i:i+2]),str(spell[i:i+3])
-        if spell[i:i+2] in subspells:
-            dmg+=grimoire[spell[i:i+2]]
-            i+=2
-        elif spell[i:i+3] in subspells:
-            dmg+=grimoire[spell[i:i+3]]
-            i+=3
-        else:
-            bad_one+=1
-            i+=1
-    if i<len(spell):
-        if spell[i:] in subspells:
-            dmg+=grimoire[spell[i:]]
-            i+=2
-        else:
-            dmg-=len(spell)-i
-	#print dmg-bad_one
-    return dmg-bad_one
 
 def check_feai(spell):
     """Checks if there is spell in spell"""
@@ -86,11 +40,7 @@ def damage(spell):
         spell=check_feai(spell)
         if spell!=None:
             dmg+=3
-            dmg1,dmg2=count_dmg1(spell),count_dmg2(spell)
-            dmg0=count_dmg(spell)
-            print dmg+dmg0
-            if (dmg1>dmg2): dmg+=dmg1
-            else: dmg+=dmg2
+            dmg+=count_dmg(spell)
     #print dmg
     if dmg<1: return 0
     return dmg
