@@ -20,4 +20,7 @@ def group_by(stream,field,succes):
     if field=="month":
         start_point+=5
         length=3
+    if success==True:
+        success='S'
+    else: success='F'
     return create_dict(stream_lines[2:],start_point,length,success,suc_pointer)
