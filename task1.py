@@ -2,8 +2,8 @@ def create_dict(stream_lines,start_point,length,success,suc_pointer):
     """Creating dictionary {years/months : int}"""
     dict={}
     for line in stream_lines:
-        key=line[start_point:start_point+length]
-        if key!='    ' and key!='   ':
+        key,suc=line[start_point:start_point+length],line[suc_pointer]
+        if key!='    ' and key!='   ' and success in [suc, None]:
             keys=dict.keys()
             if key in keys:
                 dict[key]+=1
