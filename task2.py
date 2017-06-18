@@ -12,7 +12,6 @@ def count_dmg(spell):
     """Counts what damage spell deal"""
     dmg=0
     for i in grim_list:
-        #print i,spell
         count=spell.count(i)
         dmg+=count*grimoire[i]
         spell=delete_subspell(spell, i, count)
@@ -35,12 +34,15 @@ def damage(spell):
     :rtype: int
     :return: points of damage
     """
-    dmg=0
-    if "ai" in spell and spell.count('fe')==1:
-        spell=check_feai(spell)
-        if spell!=None:
-            dmg+=3
-            dmg+=count_dmg(spell)
-    #print dmg
-    if dmg<1: return 0
-    return dmg
+    try:
+        assert type(spell)==str
+    except: return "Bad input, please enter string argument"
+    else:
+        dmg=0
+        if "ai" in spell and spell.count('fe')==1:
+            spell=check_feai(spell)
+            if spell!=None:
+                dmg+=3
+                dmg+=count_dmg(spell)
+        if dmg<1: return 0
+        return dmg
