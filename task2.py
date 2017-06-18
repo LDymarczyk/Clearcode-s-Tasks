@@ -1,5 +1,5 @@
 grim_list=['jee','je','dai','ne','ain','ai']
-grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2, 'aine':4}
+grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2}
 subspells=grimoire.keys()
 
 def delete_subspell(spell, subspell, count):
@@ -39,10 +39,10 @@ def damage(spell):
     except: return "Bad input, please enter string argument"
     else:
         dmg=0
-        if "ai" in spell and spell.count('fe')==1:
-            spell=check_feai(spell)
-            if spell!=None:
-                dmg+=3
+        if "ai" in spell and spell.count('fe')==1: #string must have at least one 'ai' and exactly one 'fe'
+            spell=check_feai(spell) #looking for substring which starts from 'fe' and end with 'ai'
+            if spell!=None: 
+                dmg+=3 #fe+ai = 3
                 dmg+=count_dmg(spell)
         if dmg<1: return 0
         return dmg
