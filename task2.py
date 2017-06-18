@@ -1,4 +1,4 @@
-grim_list=['jee','je','dai','aine','ain','ai','ne']
+grim_list=['jee','je','dai','ne','ain','ai']
 grimoire={'fe':1,'je':2,'jee':3,'ain':3,'dai':5,'ne':2,'ai':2, 'aine':4}
 subspells=grimoire.keys()
 
@@ -9,7 +9,7 @@ def delete_subspell(spell, subspell, count):
     return spell
 	
 def count_dmg(spell):
-    """Counts what damage spell deal"""
+    """Counts what damage spell deals"""
     dmg=0
     for i in grim_list:
         count=spell.count(i)
