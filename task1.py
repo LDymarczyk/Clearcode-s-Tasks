@@ -21,13 +21,14 @@ def group_by(stream,field,success=None):
     Output: dictionary {years/months : int}"""
     try:
         assert field in ['year','month'] and success in [True,False,None]
-    except: print "Bad inputs"
-    stream_lines=stream.readlines()
-    start_point,suc_pointer=stream_lines[0].find("Launch Date"),stream_lines[0].find("Suc")
-    length=4
-    if field=="month":
-        start_point+=5
-        length=3
-    if success==True: success='S'
-    elif success==False: success='F'
-    return create_dict(stream_lines[2:],start_point,length,success,suc_pointer)
+    except: return "Bad inputs"
+    else:
+        stream_lines=stream.readlines()
+        start_point,suc_pointer=stream_lines[0].find("Launch Date"),stream_lines[0].find("Suc")
+        length=4
+        if field=="month":
+            start_point+=5
+            length=3
+        if success==True: success='S'
+        elif success==False: success='F'
+        return create_dict(stream_lines[2:],start_point,length,success,suc_pointer)
