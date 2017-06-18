@@ -8,3 +8,5 @@ print "test with month, filter: failure"
 print group_by(open("launchlog.txt"),'year',False)
 print "test with month, filter: Succed"
 print group_by(open("launchlog.txt"),'year',True)
+print "test with bad argument"
+print group_by(open("launchlog.txt"),'day',True)
